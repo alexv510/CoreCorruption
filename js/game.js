@@ -41,14 +41,13 @@ var game = {
     "loaded" : function () {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
-
-        // add our player entity in the entity pool
-        me.pool.register("mainPlayer", game.PlayerEntity);
 		
-		// enable the keyboard
-		me.input.bindKey(me.input.KEY.LEFT,  "left");
+		me.pool.register( "player", game.PlayerEntity );
+		
+		me.input.bindKey(me.input.KEY.LEFT, "left");
 		me.input.bindKey(me.input.KEY.RIGHT, "right");
-		me.input.bindKey(me.input.KEY.X,     "jump", true);
+		me.input.bindKey(me.input.KEY.UP, "up");
+		me.input.bindKey(me.input.KEY.DOWN, "down");
 
         // Start the game.
         me.state.change(me.state.PLAY);
