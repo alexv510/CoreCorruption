@@ -14,6 +14,8 @@ game.resources = [
  
   //entities
   {name: "player", type:"image", src: "data/img/sprite/knight.png"},
+  // our enemty entity
+  {name: "wheelie_right", type:"image", src: "data/img/sprite/wheelie_right.png"},
   /* 
    * Maps. 
    */
