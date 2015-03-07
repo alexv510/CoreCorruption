@@ -26,14 +26,15 @@ game.PlayerEntity = me.Entity.extend({
 		
 		this.alwaysUpdate = true;
 		
-		this.renderable.addAnimation("run_right", [6,7,8], 80 );
-		this.renderable.addAnimation("run_left", [3,4,5], 80);
-		this.renderable.addAnimation("run_down", [0,1,2], 80);
-		this.renderable.addAnimation("run_up", [9, 10, 11], 80);
-		this.renderable.addAnimation("stand", [6]);
-		this.renderable.addAnimation("downstand", [0]);
-		this.renderable.addAnimation("upstand", [9]);
-		this.renderable.setCurrentAnimation("stand");
+		this.renderable.addAnimation("run_right", [6,7,8] );
+		this.renderable.addAnimation("run_left", [3,4,5]);
+		this.renderable.addAnimation("run_down", [0,1,2]);
+		this.renderable.addAnimation("run_up", [9, 10, 11]);
+		this.renderable.addAnimation("left_stand", [3]);
+		this.renderable.addAnimation("right_stand", [6]);
+		this.renderable.addAnimation("down_stand", [0]);
+		this.renderable.addAnimation("up_stand", [9]);
+		this.renderable.setCurrentAnimation("right_stand");
 		
     },
 
@@ -45,7 +46,6 @@ game.PlayerEntity = me.Entity.extend({
 		if(me.input.isKeyPressed('left')) {
 			this.renderable.flipX(true);
 			this.body.vel.x -= this.body.accel.x * me.timer.tick;
-			
 			if(!this.renderable.isCurrentAnimation("run_right")){
 				this.renderable.setCurrentAnimation("run_right");
 			}
@@ -58,15 +58,12 @@ game.PlayerEntity = me.Entity.extend({
 			}
 		}
 		else if(me.input.isKeyPressed('down')){
-			this.renderable.setCurrentAnimation("run_down");
-			this.renderable.flipY(false);
 			this.body.vel.y += this.body.accel.y*me.timer.tick;
-			if(!this.renderable.isCurrentAnimation("run_down")){
+			 if(!this.renderable.isCurrentAnimation("run_down")){
 				this.renderable.setCurrentAnimation("run_down");
 			}
 		}
 		else if(me.input.isKeyPressed('up')){
-			this.renderable.setCurrentAnimation("run_up");
 			this.body.vel.y -= this.body.accel.y* me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_up")){
 				this.renderable.setCurrentAnimation("run_up");
@@ -75,9 +72,17 @@ game.PlayerEntity = me.Entity.extend({
 		else{
 			this.body.vel.x = 0;
 			this.body.vel.y=0;
-			this.renderable.setCurrentAnimation("stand");
+			
+			if(me.input.isKeyPressed("up")){
+				this.renderable.setCurrentAnimation("up_stand");
+			}
+			else if (me.input.isKeyPressed("down")){
+				this.renderable.setCurrentAnimation("down_stand");
+			}
+			else{
+				this.renderable.setCurrentAnimation("right_stand");
+			}
 		}
-
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 
