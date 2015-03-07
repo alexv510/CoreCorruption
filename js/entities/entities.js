@@ -26,10 +26,10 @@ game.PlayerEntity = me.Entity.extend({
 		
 		this.alwaysUpdate = true;
 		
-		this.renderable.addAnimation("run_right", [6,7,8] );
-		this.renderable.addAnimation("run_left", [3,4,5]);
-		this.renderable.addAnimation("run_down", [0,1,2]);
-		this.renderable.addAnimation("run_up", [9, 10, 11]);
+		this.renderable.addAnimation("run_right", [6,7,8], 80 );
+		this.renderable.addAnimation("run_left", [3,4,5], 80);
+		this.renderable.addAnimation("run_down", [0,1,2], 80);
+		this.renderable.addAnimation("run_up", [9, 10, 11], 80);
 		this.renderable.addAnimation("stand", [6]);
 		this.renderable.addAnimation("downstand", [0]);
 		this.renderable.addAnimation("upstand", [9]);

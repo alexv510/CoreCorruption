@@ -6,6 +6,10 @@ game.resources = [
   // our level tileset
   {name: "house",  type:"image", src: "data/img/map/house.png"},
   {name: "grass", type:"image", src: "data/img/map/grass.png"},
+    
+    
+    //titlescreen stuff
+    {name: "title-screen", type:"image", src: "data/img/title/title.png"},
  
  
   //entities
