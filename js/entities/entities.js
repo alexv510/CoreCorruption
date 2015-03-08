@@ -1,3 +1,4 @@
+//@@ -0,0 +1,105 @@
 /**
  * Player Entity
  */
@@ -102,3 +103,4 @@ game.PlayerEntity = me.Entity.extend({
         return true;
     }
 });
+// No newline at end of file
