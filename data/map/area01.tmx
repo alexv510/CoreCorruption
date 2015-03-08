@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="15" tilewidth="32" tileheight="32" nextobjectid="10">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="15" tilewidth="32" tileheight="32" nextobjectid="21">
  <tileset firstgid="1" name="house" tilewidth="32" tileheight="32">
   <image source="../img/map/house.png" trans="ff00ff" width="288" height="224"/>
  </tileset>
@@ -17,5 +17,9 @@
  <objectgroup name="collision">
   <object id="4" x="0" y="0" width="960" height="96"/>
   <object id="6" x="0" y="384" width="960" height="96"/>
+ </objectgroup>
+ <objectgroup name="Enemies">
+  <object id="12" name="EnemyEntity" x="352" y="288" width="192" height="32"/>
+  <object id="20" name="EnemyEntity" x="672" y="128" width="192" height="32" rotation="90.1078"/>
  </objectgroup>
 </map>

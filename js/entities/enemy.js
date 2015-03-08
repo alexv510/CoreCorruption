@@ -32,6 +32,7 @@ game.EnemyEntity = me.Entity.extend({
  
     // walking & jumping speed
     this.body.setVelocity(4, 6);
+	this.body.gravity = 0.0;
      
   },
  

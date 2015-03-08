@@ -43,6 +43,7 @@ var game = {
         me.state.set(me.state.PLAY, new game.PlayScreen());
 		
 		me.pool.register( "player", game.PlayerEntity );
+		me.pool.register("EnemyEntity", game.EnemyEntity);
 		
 		me.input.bindKey(me.input.KEY.LEFT, "left");
 		me.input.bindKey(me.input.KEY.RIGHT, "right");
