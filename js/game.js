@@ -25,7 +25,7 @@ var game = {
     }
 
     // Initialize the audio.
-    me.audio.init("mp3,ogg");
+    me.audio.init("mp3,wav");
 
     // Set a callback to run when loading is complete.
     me.loader.onload = this.loaded.bind(this);
@@ -44,11 +44,12 @@ var game = {
 		
 		me.pool.register( "player", game.PlayerEntity );
 		me.pool.register("EnemyEntity", game.EnemyEntity);
+		me.pool.register("EnemyUp", game.EnemyUp);
 		
-		me.input.bindKey(me.input.KEY.LEFT, "left");
-		me.input.bindKey(me.input.KEY.RIGHT, "right");
-		me.input.bindKey(me.input.KEY.UP, "up");
-		me.input.bindKey(me.input.KEY.DOWN, "down");
+		me.input.bindKey(me.input.KEY.A, "left");
+		me.input.bindKey(me.input.KEY.D, "right");
+		me.input.bindKey(me.input.KEY.W, "up");
+		me.input.bindKey(me.input.KEY.S, "down");
 
         // Start the game.
         me.state.change(me.state.MENU);

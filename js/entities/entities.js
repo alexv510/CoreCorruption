@@ -6,15 +6,21 @@ game.PlayerEntity = me.Entity.extend({
     /**
      * constructor
      */
+	 
     init:function (x, y, settings) {
         // call the constructor
 		settings.image = "player";
-		
+		this.type= "PlayerEntity";
 		var width = settings.width;
 		var height = settings.height;
-		
+
 		settings.spritewidth = settings.width = 32;
 		settings.spritewidth = settings.height = 32;
+		
+		var upOn;
+		var leftOn;
+		var rightOn;
+		var downOn;
 		
         this._super(me.Entity, 'init', [x, y , settings]);
 		
@@ -35,35 +41,49 @@ game.PlayerEntity = me.Entity.extend({
 		this.renderable.addAnimation("down_stand", [0]);
 		this.renderable.addAnimation("up_stand", [9]);
 		this.renderable.setCurrentAnimation("right_stand");
-		
+				
     },
 
     /**
      * update the entity
      */
+	 
     update : function (dt) {
+
 		
-		if(me.input.isKeyPressed('left')) {
+		if(me.input.isKeyPressed('left') && leftOn == 1) {
+			rightOn = 0;
+			upOn = 0;
+			downOn = 0;
 			this.renderable.flipX(true);
 			this.body.vel.x -= this.body.accel.x * me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_right")){
 				this.renderable.setCurrentAnimation("run_right");
 			}
 		} 
-		else if(me.input.isKeyPressed('right')){
+		else if(me.input.isKeyPressed('right') && rightOn == 1){
+			leftOn = 0;
+			downOn = 0;
+			upOn = 0;
 			this.renderable.flipX(false);
 			this.body.vel.x += this.body.accel.x* me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_right")){
 				this.renderable.setCurrentAnimation("run_right");
 			}
 		}
-		else if(me.input.isKeyPressed('down')){
+		else if(me.input.isKeyPressed('down') && downOn == 1){
+			leftOn = 0;
+			upOn = 0;
+			rightOn = 0;
 			this.body.vel.y += this.body.accel.y*me.timer.tick;
 			 if(!this.renderable.isCurrentAnimation("run_down")){
 				this.renderable.setCurrentAnimation("run_down");
 			}
 		}
-		else if(me.input.isKeyPressed('up')){
+		else if(me.input.isKeyPressed('up') && upOn == 1){
+			leftOn = 0;
+			downOn = 0;
+			rightOn = 0;
 			this.body.vel.y -= this.body.accel.y* me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_up")){
 				this.renderable.setCurrentAnimation("run_up");
@@ -72,17 +92,24 @@ game.PlayerEntity = me.Entity.extend({
 		else{
 			this.body.vel.x = 0;
 			this.body.vel.y=0;
-			
-			if(me.input.isKeyPressed("up")){
-				this.renderable.setCurrentAnimation("up_stand");
-			}
-			else if (me.input.isKeyPressed("down")){
+			rightOn = 1;
+			leftOn = 1;
+			upOn = 1;
+			downOn = 1;
+
+		}
+		if (this.body.vel.x == 0 && this.body.vel.y == 0) {
+				if (this.renderable.isCurrentAnimation("run_up")) {
+				this.renderable.setCurrentAnimation("up_stand")
+			} else if (this.renderable.isCurrentAnimation("run_right")) {
+				this.renderable.setCurrentAnimation("right_stand");
+			} else if (this.renderable.isCurrentAnimation("run_left")) {
+				this.renderable.setCurrentAnimation("left_stand");
+			} else if (this.renderable.isCurrentAnimation("run_down")) {
 				this.renderable.setCurrentAnimation("down_stand");
 			}
-			else{
-				this.renderable.setCurrentAnimation("right_stand");
-			}
 		}
+
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
 
@@ -98,6 +125,14 @@ game.PlayerEntity = me.Entity.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
+		if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
+      // res.y >0 means touched by something on the bottom
+      // which mean at top position for this one
+      if (this.alive && (response.overlapV.y > 0)  || (response.overlapV.x > 0)&& response.b.type=== 'EnemyEntity') {
+        this.renderable.flicker(750);
+      }
+      return false;
+    }
         // Make all other objects solid
         return true;
     }

@@ -3,6 +3,7 @@ game.TitleScreen = me.ScreenObject.extend({
      *  action to perform on state change
      */
     onResetEvent: function() {
+        // me.audio.playTrack("theme");
         me.game.world.addChild(new me.Sprite(0,0,me.loader.getImage('title-screen')), -10);
         me.input.bindKey(me.input.KEY.ENTER, "start");// TODO
         //this is how we place text on the game.
@@ -25,6 +26,7 @@ game.TitleScreen = me.ScreenObject.extend({
 
         }
    });
+        me.audio.playTrack("theme");
     },
 
     /**
@@ -33,7 +35,7 @@ game.TitleScreen = me.ScreenObject.extend({
     onDestroyEvent: function() {
     //it is important to unbind keys when chaging scenes and to unsuscribe to listeners
         me.input.unbindKey(me.input.KEY.ENTER);
-   // me.event.unsubscribe(this.handler);// TODO
-        ;
+    me.event.unsubscribe(this.handler);// TODO
+         me.audio.stopTrack();
     }
 });
