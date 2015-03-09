@@ -40,8 +40,15 @@ game.resources = [
   /* 
    * Maps. 
    */
+<<<<<<< HEAD
   {name: "lvl1", type: "tmx", src: "data/map/lvl1.tmx"},
   
   //audio
   {name: "theme", type: "audio", src: "data/bgm2/"}
+=======
+  {name: "area01", type: "tmx", src: "data/map/area01.tmx"},
+    
+    //audio
+    {name: "theme", type: "audio", src: "data/bgm2/"}
+>>>>>>> origin/master
 ];
