@@ -134,5 +134,7 @@ game.PlayerEntity = me.Entity.extend({
     }
         // Make all other objects solid
         return true;
-    }
+    },
+	
+	
 });

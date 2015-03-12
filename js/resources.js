@@ -34,6 +34,8 @@ game.resources = [
   //titlescreen stuff
   {name: "title-screen", type:"image", src: "data/img/title/title.png"},
  
+  //font
+  {name: "16x16_font", type: "image", src: "data/img/font/16x16_font.png"},
  
   //entities
   {name: "player", type:"image", src: "data/img/sprite/knight.png"},
