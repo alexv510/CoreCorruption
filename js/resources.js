@@ -26,10 +26,13 @@ game.resources = [
   {name: "sidewalk_end_bottomleft", type:"image", src: "data/img/map/sidewalk_end_bottomleft.png"},
   {name: "sidewalk_end_left", type:"image", src: "data/img/map/sidewalk_end_left.png"},
   {name: "sidewalk_end_bottomright", type:"image", src: "data/img/map/sidewalk_end_bottomright.png"},
+  {name: "sidewalk_corner_top_right", type:"image", src: "data/img/map/sidewalk_corner_top_right.png"},
+  {name: "sidewalk_corner_top_left", type:"image", src: "data/img/map/sidewalk_corner_top_left.png"},
+  {name: "sidewalk_corner_bottom_right", type:"image", src: "data/img/map/sidewalk_corner_bottom_right.png"},
+  {name: "sidewalk_corner_bottom_left", type:"image", src: "data/img/map/sidewalk_corner_bottom_left.png"},
     
-    
-    //titlescreen stuff
-    {name: "title-screen", type:"image", src: "data/img/title/title.png"},
+  //titlescreen stuff
+  {name: "title-screen", type:"image", src: "data/img/title/title.png"},
  
  
   //entities
@@ -37,6 +40,7 @@ game.resources = [
   // our enemty entity
   {name: "wheelie_right", type:"image", src: "data/img/sprite/cop3.png"},
   {name: "wheelie_up", type:"image", src: "data/img/sprite/wheelie_right.png"},
+  
   /* 
    * Maps. 
    */

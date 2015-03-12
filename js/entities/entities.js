@@ -50,7 +50,6 @@ game.PlayerEntity = me.Entity.extend({
 	 
     update : function (dt) {
 
-		
 		if(me.input.isKeyPressed('left') && leftOn == 1) {
 			rightOn = 0;
 			upOn = 0;
