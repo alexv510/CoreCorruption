@@ -43,6 +43,9 @@ var game = {
         me.state.set(me.state.PLAY, new game.PlayScreen());
 		
 		me.pool.register( "player", game.PlayerEntity );
+		me.pool.register("BulletEntity", game.BulletEntity);
+		
+		//ENEMIES
 		me.pool.register("EnemyEntity", game.EnemyEntity);
 		me.pool.register("EnemyUp", game.EnemyUp);
 		
@@ -50,6 +53,7 @@ var game = {
 		me.input.bindKey(me.input.KEY.D, "right");
 		me.input.bindKey(me.input.KEY.W, "up");
 		me.input.bindKey(me.input.KEY.S, "down");
+		me.input.bindKey(me.input.KEY.SPACE, "shoot", true);
 
         // Start the game.
         me.state.change(me.state.MENU);

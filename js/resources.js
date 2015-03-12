@@ -43,6 +43,9 @@ game.resources = [
   {name: "wheelie_right", type:"image", src: "data/img/sprite/cop3.png"},
   {name: "wheelie_up", type:"image", src: "data/img/sprite/wheelie_right.png"},
   
+  //bullet
+  {name: "bullet", type:"image", src: "data/img/map/bullet.png"},
+  
   /* 
    * Maps. 
    */
