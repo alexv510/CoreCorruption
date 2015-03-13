@@ -7,7 +7,7 @@ game.CoreEntity = me.Entity.extend( {
     var width = settings.width;
     var height = settings.height;	 
 	var health;
-	this.health = 50;
+	this.health = 500;
     settings.spritewidth = settings.width = 32;
     settings.spritewidth = settings.height = 32;
     this._super(me.Entity, 'init', [x, y , settings]);
@@ -24,6 +24,7 @@ game.CoreEntity = me.Entity.extend( {
 				}
 		if (this.health <= 0) {
         me.game.world.removeChild(this);
+        me.state.change(me.state.GAME_END);
 	}
         return false;
     }

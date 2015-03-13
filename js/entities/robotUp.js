@@ -3,7 +3,7 @@ game.RobotUp = me.Entity.extend({
     // define this here instead of tiled
      //var skin = Math.floor((Math.random()*6)+1);
       settings.name = "enemy";
-   this.hp = 500;
+   this.hp = 1200;
       settings.image = "robot";
         this.now = new Date().getTime();
       this.lastShot = this.now;
@@ -39,8 +39,8 @@ game.RobotUp = me.Entity.extend({
     this.walkLeft = false;
 
 	
- this.renderable.addAnimation("run_up", [0,1,2] );
-      this.renderable.addAnimation("run_down", [9,10,11] );
+ this.renderable.addAnimation("run_down", [0,1,2] );
+      this.renderable.addAnimation("run_up", [9,10,11] );
     // walking & jumping speed
     this.body.setVelocity(2, 3);
      
@@ -115,10 +115,13 @@ game.RobotUp = me.Entity.extend({
   if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
       // res.y >0 means touched by something on the bottom
       // which mean at top position for this one
-
+  if(response.b.body.collisionType === me.collision.types.PROJECTILE_OBJECT) {
+      this.hp -= 10;
+        this.renderable.flicker(750);
+  }
+      
       if (this.alive && ((response.overlapV.y >= 0)  || (response.overlapV.x >= -5)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
-  if(response.b.body.collisionType === me.collision.types.PROJECTILE_OBJECT) this.hp -= 10;
-       // this.renderable.flicker(750);
+
           //here i removed flickering and added audio stuff
          var choose = Math.floor((Math.random()*3)+1);
          if(this.touchSound == false){

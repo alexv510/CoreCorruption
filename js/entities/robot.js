@@ -128,9 +128,12 @@ game.RobotEntity = me.Entity.extend({
     if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
       // res.y >0 means touched by something on the bottom
       // which mean at top position for this one
-
+  if(response.b.body.collisionType === me.collision.types.PROJECTILE_OBJECT) {
+      this.hp -= 10;
+        this.renderable.flicker(750);
+  }
       if (this.alive && ((response.overlapV.y >= 0)  || (response.overlapV.x >= -5)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
-  if(response.b.body.collisionType === me.collision.types.PROJECTILE_OBJECT) this.hp -= 10;
+  //sif(response.b.body.collisionType === me.collision.types.PROJECTILE_OBJECT) this.hp -= 10;
        // this.renderable.flicker(750);
           //here i removed flickering and added audio stuff
          var choose = Math.floor((Math.random()*3)+1);

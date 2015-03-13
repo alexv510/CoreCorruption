@@ -44,6 +44,7 @@ var game = {
         me.state.set(me.state.PLAY, new game.PlayScreen());
 		me.state.transition("fade", "#FFFFFF", 250);
         me.state.set(me.state.GAMEOVER, new game.GameOverScreen());
+        me.state.set(me.state.GAME_END, new game.WinScreen());
 		
 		me.pool.register( "player", game.PlayerEntity );
 		me.pool.register("BulletEntity", game.BulletEntity);
@@ -63,6 +64,7 @@ var game = {
 		me.input.bindKey(me.input.KEY.D, "right");
 		me.input.bindKey(me.input.KEY.W, "up");
 		me.input.bindKey(me.input.KEY.S, "down");
+        	me.input.bindKey(me.input.KEY.SHIFT, "next");
 
 		me.input.bindKey(me.input.KEY.SPACE, "shoot", true);
 

@@ -69,6 +69,7 @@ game.BulletEntity = me.Entity.extend({
  			me.game.world.removeChild(this);
  			return false;
     	}
+       // me.game.world.removeChild(this);
         return false;
     }
 });
