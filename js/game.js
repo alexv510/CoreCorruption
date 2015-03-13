@@ -55,6 +55,8 @@ var game = {
 		me.pool.register("EnemyEntity", game.EnemyEntity);
 		me.pool.register("EnemyUp", game.EnemyUp);
 		me.pool.register("CoreEntity", game.CoreEntity);
+		me.pool.register("robot", game.RobotEntity);
+		me.pool.register("robotUp", game.RobotUp);
 		
 		me.input.bindKey(me.input.KEY.A, "left");
 		me.input.bindKey(me.input.KEY.D, "right");
