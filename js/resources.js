@@ -31,14 +31,17 @@ game.resources = [
   {name: "sidewalk_corner_bottom_right", type:"image", src: "data/img/map/sidewalk_corner_bottom_right.png"},
   {name: "sidewalk_corner_bottom_left", type:"image", src: "data/img/map/sidewalk_corner_bottom_left.png"},
     
-  //titlescreen stuff
+  //screen stuff
   {name: "title-screen", type:"image", src: "data/img/title/title.png"},
+  {name: "deathscreen", type:"image", src: "data/img/gui/deathscreen.png"},
  
   //font
   {name: "16x16_font", type: "image", src: "data/img/font/16x16_font.png"},
+  {name: "32x32_font", type: "image", src: "data/img/font/32x32_font.png"},
  
   //entities
   {name: "player", type:"image", src: "data/img/sprite/knight.png"},
+  {name: "spinning_coin_gold",  type:"image",	src: "data/img/map/disk.png"},
   // our enemty entity
   {name: "wheelie_right", type:"image", src: "data/img/sprite/cop3.png"},
   {name: "wheelie_up", type:"image", src: "data/img/sprite/wheelie_right.png"},

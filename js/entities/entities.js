@@ -10,7 +10,6 @@ game.PlayerEntity = me.Entity.extend({
     init:function (x, y, settings) {
         // call the constructor
 		settings.image = "player";
-		this.type= "PlayerEntity";
 		var width = settings.width;
 		var height = settings.height;
 
@@ -27,6 +26,8 @@ game.PlayerEntity = me.Entity.extend({
 		this.body.gravity = 0.0;
 		
 		this.body.setVelocity(3,3);
+		
+		this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 		
 		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 		
@@ -51,7 +52,7 @@ game.PlayerEntity = me.Entity.extend({
     update : function (dt) {
 		
 		if(me.input.isKeyPressed('shoot')){
-			var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
+			var bullet = me.pool.pull("BulletEntity", this.pos.x-5, this.pos.y, {
 				image: 'bullet',
 				spritewidth: 24,
 				spriteheight: 24,
@@ -119,6 +120,10 @@ game.PlayerEntity = me.Entity.extend({
 				this.renderable.setCurrentAnimation("down_stand");
 			}
 		}
+		
+		/* if(game.data.hp <= 0){
+			me.state.change(me.state.GAME_END);
+		} */
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
@@ -135,16 +140,39 @@ game.PlayerEntity = me.Entity.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) {
-		if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
-      // res.y >0 means touched by something on the bottom
-      // which mean at top position for this one
-      if (this.alive && (response.overlapV.y > 0)  || (response.overlapV.x > 0)&& response.b.type=== 'EnemyEntity') {
-        this.renderable.flicker(750);
-      }
-      return false;
-    }
-        // Make all other objects solid
-        return true;
+		switch (response.b.body.collisionType) {
+		    case me.collision.types.WORLD_SHAPE:
+		    	if (other.type === "platform") {
+		        	if (this.body.falling && !me.input.isKeyPressed('down') && (response.overlapV.y > 0) && (~~this.body.vel.y >= ~~response.overlapV.y)) {
+		          		// Disable collision on the x axis
+		          		response.overlapV.x = 0;
+		          		// Respond to the platform (it is solid)
+		          		return true;
+		        	}
+		        // Do not respond to the platform (pass through)
+		        	return false;
+		      	}
+		      	break;
+	 
+		    case me.collision.types.ENEMY_OBJECT:
+				//flicker in case we touched an enemy
+				//if flickering, don't deduct hp until done flickering
+	        	if (other.name == "enemy"){
+	        		if(!this.renderable.isFlickering()){
+	        			this.renderable.flicker(750);
+	        			game.data.hp -= 50;
+	        		}
+	        	}
+		      	return false;
+		      	break;
+
+		    default:
+		    	// Do not respond to other objects (e.g. coins)
+		      	return false;
+		  }
+	
+	 	  // Make the object solid
+	  	  return true;
     },
 	
 	

@@ -5,7 +5,7 @@ game.EnemyEntity = me.Entity.extend({
   init: function(x, y, settings) {
     // define this here instead of tiled
     settings.image = "wheelie_right";
-      this.type == "EnemyEntity";
+	settings.name = "enemy";
      
     // save the area size defined in Tiled
     var width = settings.width;
@@ -43,7 +43,7 @@ game.EnemyEntity = me.Entity.extend({
     // walking & jumping speed
     this.body.setVelocity(1, 1);
 	this.body.gravity = 0.0;
-     
+    this.body.setCollisionType = me.collision.types.ENEMY_OBJECT;
   },
  
   // manage the enemy movement
