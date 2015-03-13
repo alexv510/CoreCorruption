@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="62" height="46" tilewidth="32" tileheight="32" nextobjectid="127">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="62" height="46" tilewidth="32" tileheight="32" nextobjectid="135">
  <tileset firstgid="1" name="wall_right" tilewidth="32" tileheight="32">
   <image source="../img/map/wall_right.png" width="32" height="32"/>
  </tileset>
@@ -83,6 +83,13 @@
   <object id="115" name="robotUp" x="576" y="64" width="32" height="64"/>
   <object id="124" name="robot" x="512" y="128" width="64" height="32"/>
   <object id="126" name="robotUp" x="480" y="64" width="32" height="64"/>
+  <object id="127" name="robotUp" x="512" y="480" width="32" height="128"/>
+  <object id="128" name="robot" x="96" y="928" width="128" height="32"/>
+  <object id="129" name="robot" x="928" y="640" width="160" height="32"/>
+  <object id="130" name="robotUp" x="1248" y="480" width="32" height="128"/>
+  <object id="131" name="robotUp" x="704" y="480" width="32" height="128"/>
+  <object id="132" name="robotUp" x="1664" y="896" width="32" height="128"/>
+  <object id="133" name="robot" x="1600" y="1312" width="192" height="32"/>
  </objectgroup>
  <objectgroup name="collision">
   <object id="4" x="0" y="1056" width="256" height="128"/>
@@ -193,6 +200,12 @@
    </properties>
   </object>
   <object id="122" name="health" x="768" y="224" width="32" height="32">
+   <properties>
+    <property name="image" value="medkit"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="134" name="health" x="1280" y="128" width="32" height="32">
    <properties>
     <property name="image" value="medkit"/>
     <property name="spritewidth" value="32"/>
