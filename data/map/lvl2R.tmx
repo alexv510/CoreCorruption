@@ -76,13 +76,13 @@
   <image source="../img/map/sidewalk_corner_top_right.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="82" name="building_brick" tilewidth="32" tileheight="32">
-  <image source="../img/map/building_brick.png" width="160" height="96"/>
+  <image source="../../../32x32/building_brick.png" width="160" height="96"/>
  </tileset>
  <tileset firstgid="97" name="cone" tilewidth="32" tileheight="32">
-  <image source="../img/map/cone.png" width="32" height="32"/>
+  <image source="../../../32x32/cone.png" width="32" height="32"/>
  </tileset>
  <tileset firstgid="98" name="barrier" tilewidth="32" tileheight="32">
-  <image source="../img/map/barrier.png" width="64" height="32"/>
+  <image source="../../../32x32/barrier.png" width="64" height="32"/>
  </tileset>
  <tileset firstgid="100" name="box_big" tilewidth="32" tileheight="32">
   <image source="../img/map/box_big.png" width="64" height="64"/>
