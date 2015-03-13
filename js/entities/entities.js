@@ -9,10 +9,20 @@ game.PlayerEntity = me.Entity.extend({
 	 
     init:function (x, y, settings) {
         // call the constructor
+       this.bosslevel = false;
 		settings.image = "player";
 		var width = settings.width;
 		var height = settings.height;
         this.shotEnd = false;
+         if(me.levelDirector.getCurrentLevelId() === 'lvl1'||me.levelDirector.getCurrentLevelId() === 'lvl2'){
+             //this.bosslevel = true;
+            me.audio.stopTrack();
+            me.audio.playTrack("LevelSong");
+        }else    if(me.levelDirector.getCurrentLevelId() === 'message2'||me.levelDirector.getCurrentLevelId() === 'message3'){
+             //this.bosslevel = true;
+            me.audio.stopTrack();
+            me.audio.playTrack("story");
+        }
 
 		settings.spritewidth = settings.width = 32;
 		settings.spritewidth = settings.height = 32;
@@ -52,7 +62,12 @@ game.PlayerEntity = me.Entity.extend({
      */
 	 
     update : function (dt) {
-		
+        
+		 if(me.levelDirector.getCurrentLevelId() === 'lvl3' && this.bosslevel == false){
+             this.bosslevel = true;
+            me.audio.stopTrack();
+            me.audio.playTrack("boss");
+        }
 		if(me.input.isKeyPressed('shoot') && me.levelDirector.getCurrentLevelId() === 'lvl3'){
 			var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
 				image: 'bullet',
