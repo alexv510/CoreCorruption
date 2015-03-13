@@ -31,7 +31,7 @@ game.PlayerEntity = me.Entity.extend({
 		var leftOn;
 		var rightOn;
 		var downOn;
-		var lastMove;
+		var lastMove =1;
 		
         this._super(me.Entity, 'init', [x, y , settings]);
 		
@@ -175,12 +175,12 @@ game.PlayerEntity = me.Entity.extend({
 		    	if (other.type === "platform") {
 		        	if (this.body.falling && !me.input.isKeyPressed('down') && (response.overlapV.y > 0) && (~~this.body.vel.y >= ~~response.overlapV.y)) {
 		          		// Disable collision on the x axis
-		          		response.overlapV.x = 0;
+		          		//response.overlapV.x = 0;
 		          		// Respond to the platform (it is solid)
 		          		return true;
 		        	}
 		        // Do not respond to the platform (pass through)
-		        	return false;
+		        	return true;
 		      	}
 		      	break;
 	 
