@@ -1,5 +1,6 @@
 game.EnemyUp = me.Entity.extend({
   init: function(x, y, settings) {
+      this.hp = 500;
     // define this here instead of tiled
      var skin = Math.floor((Math.random()*6)+1);
       settings.name = "enemy";
@@ -57,6 +58,7 @@ game.EnemyUp = me.Entity.extend({
   update: function(dt) {
  this.now = new Date().getTime();
     if (this.alive) {
+        if(this.hp <= 0) me.game.world.removeChild(this);
       if (this.walkLeft && this.pos.y <= this.startY) {
       this.walkLeft = false;
            this.touchSound = false; // here is where I change it to false
@@ -121,7 +123,7 @@ game.EnemyUp = me.Entity.extend({
   if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
       // res.y >0 means touched by something on the bottom
       // which mean at top position for this one
-
+     if(response.b.body.collisionType === me.collision.types.PROJECTILE_OBJECT) this.hp -= 10;
       if (this.alive && ((response.overlapV.y >= 0)  || (response.overlapV.x >= -5)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
 
        // this.renderable.flicker(750);

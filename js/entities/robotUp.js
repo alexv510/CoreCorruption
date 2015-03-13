@@ -3,7 +3,7 @@ game.RobotUp = me.Entity.extend({
     // define this here instead of tiled
      //var skin = Math.floor((Math.random()*6)+1);
       settings.name = "enemy";
-   
+   this.hp = 500;
       settings.image = "robot";
         this.now = new Date().getTime();
       this.lastShot = this.now;
@@ -50,6 +50,7 @@ game.RobotUp = me.Entity.extend({
   update: function(dt) {
  this.now = new Date().getTime();
     if (this.alive) {
+        if(this.hp <= 0) me.game.world.removeChild(this);
       if (this.walkLeft && this.pos.y <= this.startY) {
       this.walkLeft = false;
            this.touchSound = false; // here is where I change it to false
@@ -116,7 +117,7 @@ game.RobotUp = me.Entity.extend({
       // which mean at top position for this one
 
       if (this.alive && ((response.overlapV.y >= 0)  || (response.overlapV.x >= -5)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
-
+  if(response.b.body.collisionType === me.collision.types.PROJECTILE_OBJECT) this.hp -= 10;
        // this.renderable.flicker(750);
           //here i removed flickering and added audio stuff
          var choose = Math.floor((Math.random()*3)+1);
