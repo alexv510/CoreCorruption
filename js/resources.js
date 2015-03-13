@@ -123,5 +123,6 @@ game.resources = [
   {name: "LoudBang", type: "audio", src:"data/sfx/"},
   {name: "GameOver", type: "audio", src: "data/bgm4/"},
     {name: "boss", type: "audio", src: "data/boss/"},
-    {name: "story", type: "audio", src: "data/bgm5/"}
+    {name: "story", type: "audio", src: "data/bgm5/"},
+    {name: "victory", type: "audio", src: "data/victory/"}
 ];

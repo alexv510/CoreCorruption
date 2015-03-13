@@ -22,7 +22,7 @@ game.WinScreen = me.ScreenObject.extend({
 
         }
    });
-       me.audio.playTrack("GameOver");
+       me.audio.playTrack("Victory");
 		game.data.hp = 100;
     },
 

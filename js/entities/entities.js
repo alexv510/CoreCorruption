@@ -54,7 +54,8 @@ game.PlayerEntity = me.Entity.extend({
 		this.renderable.addAnimation("down_stand", [0]);
 		this.renderable.addAnimation("up_stand", [9]);
 		this.renderable.setCurrentAnimation("right_stand");
-				
+		this.bufferX = 32;
+        this.bufferY = 0;
     },
 
     /**
@@ -62,14 +63,15 @@ game.PlayerEntity = me.Entity.extend({
      */
 	 
     update : function (dt) {
-        if(me.input.isKeyPressed('next')) me.levelDirector.nextLevel();
+       
+        if(me.input.isKeyPressed('next')) game.data.hp = 100;
 		 if(me.levelDirector.getCurrentLevelId() === 'lvl3' && this.bosslevel == false){
              this.bosslevel = true;
             me.audio.stopTrack();
             me.audio.playTrack("boss");
         }
-		if(me.input.isKeyPressed('shoot')/* && (me.levelDirector.getCurrentLevelId() === 'lvl3'||me.levelDirector.getCurrentLevelId() === 'message_instructions') */){
-			var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
+		if(me.input.isKeyPressed('shoot') && (me.levelDirector.getCurrentLevelId() === 'lvl3'||me.levelDirector.getCurrentLevelId() === 'message_instructions') ){
+			var bullet = me.pool.pull("BulletEntity", this.pos.x+this.bufferX, this.pos.y+this.bufferY, {
 				image: 'bullet',
 				spritewidth: 24,
 				spriteheight: 24,
@@ -83,6 +85,8 @@ game.PlayerEntity = me.Entity.extend({
 			upOn = 0;
 			downOn = 0;
 			lastMove = 3;
+            this.bufferX = -32;
+            this.bufferY =0;
 			this.renderable.flipX(true);
 			this.body.vel.x -= this.body.accel.x * me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_right")){
@@ -94,6 +98,8 @@ game.PlayerEntity = me.Entity.extend({
 			downOn = 0;
 			upOn = 0;
 			lastMove = 1;
+            this.bufferX = 32;
+             this.bufferY =0;
 			this.renderable.flipX(false);
 			this.body.vel.x += this.body.accel.x* me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_right")){
@@ -105,6 +111,8 @@ game.PlayerEntity = me.Entity.extend({
 			upOn = 0;
 			rightOn = 0;
 			lastMove = 2;
+            this.bufferY = 32;
+            this.bufferX = 0;
 			this.body.vel.y += this.body.accel.y*me.timer.tick;
 			 if(!this.renderable.isCurrentAnimation("run_down")){
 				this.renderable.setCurrentAnimation("run_down");
@@ -115,6 +123,8 @@ game.PlayerEntity = me.Entity.extend({
 			downOn = 0;
 			rightOn = 0;
 			lastMove = 0;
+            this.bufferY = -32;
+            this.bufferX = 0;
 			this.body.vel.y -= this.body.accel.y* me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_up")){
 				this.renderable.setCurrentAnimation("run_up");

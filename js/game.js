@@ -64,6 +64,7 @@ var game = {
 		me.input.bindKey(me.input.KEY.D, "right");
 		me.input.bindKey(me.input.KEY.W, "up");
 		me.input.bindKey(me.input.KEY.S, "down");
+        //cheatcode
         	me.input.bindKey(me.input.KEY.SHIFT, "next");
 
 		me.input.bindKey(me.input.KEY.SPACE, "shoot", true);
