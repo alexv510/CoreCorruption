@@ -26,17 +26,26 @@ game.resources = [
   {name: "sidewalk_end_bottomleft", type:"image", src: "data/img/map/sidewalk_end_bottomleft.png"},
   {name: "sidewalk_end_left", type:"image", src: "data/img/map/sidewalk_end_left.png"},
   {name: "sidewalk_end_bottomright", type:"image", src: "data/img/map/sidewalk_end_bottomright.png"},
+  {name: "sidewalk_corner_top_right", type:"image", src: "data/img/map/sidewalk_corner_top_right.png"},
+  {name: "sidewalk_corner_top_left", type:"image", src: "data/img/map/sidewalk_corner_top_left.png"},
+  {name: "sidewalk_corner_bottom_right", type:"image", src: "data/img/map/sidewalk_corner_bottom_right.png"},
+  {name: "sidewalk_corner_bottom_left", type:"image", src: "data/img/map/sidewalk_corner_bottom_left.png"},
     
-    
-    //titlescreen stuff
-    {name: "title-screen", type:"image", src: "data/img/title/title.png"},
+  //titlescreen stuff
+  {name: "title-screen", type:"image", src: "data/img/title/title.png"},
  
+  //font
+  {name: "16x16_font", type: "image", src: "data/img/font/16x16_font.png"},
  
   //entities
   {name: "player", type:"image", src: "data/img/sprite/knight.png"},
   // our enemty entity
   {name: "wheelie_right", type:"image", src: "data/img/sprite/cop3.png"},
   {name: "wheelie_up", type:"image", src: "data/img/sprite/wheelie_right.png"},
+  
+  //bullet
+  {name: "bullet", type:"image", src: "data/img/map/bullet.png"},
+  
   /* 
    * Maps. 
    */

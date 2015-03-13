@@ -24,7 +24,7 @@ game.HUD.Container = me.Container.extend({
         this.name = "HUD";
 
         // add our child score object at the top left corner
-        this.addChild(new game.HUD.ScoreItem(5, 5));
+        this.addChild(new game.HUD.Health(10, 10));
     }
 });
 
@@ -32,7 +32,7 @@ game.HUD.Container = me.Container.extend({
 /**
  * a basic HUD item to display score
  */
-game.HUD.ScoreItem = me.Renderable.extend({
+game.HUD.Health = me.Renderable.extend({
     /**
      * constructor
      */
@@ -41,19 +41,22 @@ game.HUD.ScoreItem = me.Renderable.extend({
         // call the parent constructor
         // (size does not matter here)
         this._super(me.Renderable, 'init', [x, y, 10, 10]);
+		
+		this.font = new me.BitmapFont("16x16_font", 16);
+		this.font.set("left");
 
         // local copy of the global score
-        this.score = -1;
+        this.hp = -1;
     },
 
     /**
      * update function
      */
-    update : function () {
+    update : function (dt) {
         // we don't do anything fancy here, so just
         // return true if the score has been updated
-        if (this.score !== game.data.score) {
-            this.score = game.data.score;
+        if (this.hp !== game.data.hp) {
+            this.hp = game.data.hp;
             return true;
         }
         return false;
@@ -62,8 +65,9 @@ game.HUD.ScoreItem = me.Renderable.extend({
     /**
      * draw the score
      */
-    draw : function (context) {
+    draw : function (renderer) {
         // draw it baby !
+		this.font.draw(renderer, "HP: " + game.data.hp, this.pos.x, this.pos.y);
     }
 
 });

@@ -49,12 +49,25 @@ game.PlayerEntity = me.Entity.extend({
      */
 	 
     update : function (dt) {
+        
+        
 
 		if(me.input.isKeyPressed('Shift')){
             this.body.setVelocity(3,3);
         }else{
             this.body.setVelocity(1,1);
         }
+        
+        	if(me.input.isKeyPressed('shoot')){
+			var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
+				image: 'bullet',
+				spritewidth: 24,
+				spriteheight: 24,
+				width: 24,
+				height: 24
+			}, [upOn, leftOn, rightOn, downOn]);
+			me.game.world.addChild(bullet, this.z);
+		}
 		if(me.input.isKeyPressed('left') && leftOn == 1) {
 			rightOn = 0;
 			upOn = 0;
