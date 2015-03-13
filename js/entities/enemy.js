@@ -6,6 +6,8 @@ game.EnemyEntity = me.Entity.extend({
     // define this here instead of tiled
     settings.image = "wheelie_right";
 	settings.name = "enemy";
+      this.now = new Date().getTime();
+      this.lastShot = new Date().getTime();
     this.touchSound = false; // is used to make sure sound is not repeated 
     // save the area size defined in Tiled
     var width = settings.width;
@@ -57,6 +59,17 @@ game.EnemyEntity = me.Entity.extend({
       this.walkLeft = true;
         this.touchSound = false; // here too
     }
+        if((Math.round(this.now/1000)%10 === 0) && ((this.now - this.lastShot) >= 1000)){
+                this.lastShot = this.now;
+               /* var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
+				image: 'bullet',
+				spritewidth: 24,
+				spriteheight: 24,
+				width: 24,
+				height: 24
+			}, [upOn, downOn, leftOn, rightOn]);
+			me.game.world.addChild(bullet, this.z);*/
+        }
         
         if(this.pos.x - game.data.playerX <= 96 &&
              ( this.pos.y - game.data.playerY <= 32 ||
@@ -113,7 +126,7 @@ game.EnemyEntity = me.Entity.extend({
     if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
       // res.y >0 means touched by something on the bottom
       // which mean at top position for this one
-      if (this.alive && ((response.overlapV.y > 0)  || (response.overlapV.x > 0)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
+      if (this.alive && ((response.overlapV.y >= 0)  || (response.overlapV.x >= 0)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
        // this.renderable.flicker(750);
           //here i removed flickering and added audio stuff
          var choose = Math.floor((Math.random()*3)+1);
@@ -131,14 +144,14 @@ game.EnemyEntity = me.Entity.extend({
          }
           
       }
-         if ((response.overlapV.x > 0)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
+         if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
                 //this.moveV = false;
             this.walkLeft = this.walkLeft ? false: true;
          }
        
       return false;
     }
-       if ((response.overlapV.x > 0)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
+       if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
                 this.walkLeft = this.walkLeft ? false: true;
          }
       //this.touchSound = false;
