@@ -5,7 +5,7 @@ game.PlayScreen = me.ScreenObject.extend({
     onResetEvent: function() {
         
 		// load a level
-		me.levelDirector.loadLevel("lvl1");
+		me.levelDirector.loadLevel("message_instructions");
 		
 		
         // add our HUD to the game world

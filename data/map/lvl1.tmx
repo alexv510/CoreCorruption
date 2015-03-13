@@ -173,7 +173,7 @@
    <properties>
     <property name="duration" value="250"/>
     <property name="fade" value="#000000"/>
-    <property name="to" value="lvl2"/>
+    <property name="to" value="message2"/>
    </properties>
   </object>
  </objectgroup>

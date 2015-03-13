@@ -73,6 +73,10 @@ game.resources = [
   {name: "table", type:"image", src: "data/img/map/table.png"},
   {name: "trash_can", type:"image", src: "data/img/map/trash_can.png"},
   {name: "portal", type:"image", src: "data/img/map/portal.png"},
+  {name: "message_instructions", type:"image", src: "data/img/map/message_instructions.png"},
+  {name: "message1", type:"image", src: "data/img/map/message1.png"},
+  {name: "message2", type:"image", src: "data/img/map/message2.png"},
+  {name: "message3", type:"image", src: "data/img/map/message3.png"},
     
   //screen stuff
   {name: "title-screen", type:"image", src: "data/img/title/title.png"},
@@ -102,6 +106,10 @@ game.resources = [
   {name: "lvl1", type: "tmx", src: "data/map/lvl1.tmx"},
   {name: "lvl2", type: "tmx", src: "data/map/lvl2.tmx"},
   {name: "lvl3", type: "tmx", src: "data/map/lvl3.tmx"},
+  {name: "message_instructions", type: "tmx", src: "data/map/message_instructions.tmx"},
+  {name: "message3", type: "tmx", src: "data/map/message3.tmx"},
+  {name: "message2", type: "tmx", src: "data/map/message2.tmx"},
+  {name: "message1", type: "tmx", src: "data/map/message1.tmx"},
   
   //audio
   {name: "theme", type: "audio", src: "data/bgm2/"},
@@ -109,6 +117,6 @@ game.resources = [
   {name: "criminalscum", type: "audio", src: "data/voice/"},
   {name: "stoprest", type: "audio", src: "data/voice/"},
   {name: "freezescumbag", type: "audio", src: "data/voice/"},
-    {name: "LoudBang", type: "audio", src:"data/sfx/"},
-    {name: "GameOver", type: "audio", src: "data/bgm4/"}
+  {name: "LoudBang", type: "audio", src:"data/sfx/"},
+  {name: "GameOver", type: "audio", src: "data/bgm4/"}
 ];
