@@ -113,7 +113,7 @@ game.EnemyEntity = me.Entity.extend({
     if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
       // res.y >0 means touched by something on the bottom
       // which mean at top position for this one
-      if (this.alive && ((response.overlapV.y > 0)  || (response.overlapV.x > 0)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
+      if (this.alive && ((response.overlapV.y > 0)  || (response.overlapV.x >= -5)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
        // this.renderable.flicker(750);
           //here i removed flickering and added audio stuff
          var choose = Math.floor((Math.random()*3)+1);
@@ -131,14 +131,14 @@ game.EnemyEntity = me.Entity.extend({
          }
           
       }
-         if ((response.overlapV.x > 0)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
+         if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
                 //this.moveV = false;
             this.walkLeft = this.walkLeft ? false: true;
          }
        
       return false;
     }
-       if ((response.overlapV.x > 0)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
+       if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
                 this.walkLeft = this.walkLeft ? false: true;
          }
       //this.touchSound = false;

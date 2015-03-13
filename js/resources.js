@@ -95,6 +95,8 @@ game.resources = [
    * Maps. 
    */
   {name: "lvl1", type: "tmx", src: "data/map/lvl1.tmx"},
+  {name: "lvl2", type: "tmx", src: "data/map/lvl2.tmx"},
+  {name: "lvl3", type: "tmx", src: "data/map/lvl3.tmx"},
   
   //audio
   {name: "theme", type: "audio", src: "data/bgm2/"},

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="32" tileheight="32" backgroundcolor="#363636" nextobjectid="106">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="30" tilewidth="32" tileheight="32" backgroundcolor="#363636" nextobjectid="107">
  <tileset firstgid="1" name="house" tilewidth="32" tileheight="32">
   <image source="../img/map/house.png" trans="ff00ff" width="288" height="224"/>
  </tileset>
@@ -166,6 +166,13 @@
  </layer>
  <objectgroup color="#0a00a4" name="Entities">
   <object id="54" name="player" x="64" y="32" width="32" height="32"/>
+  <object id="106" name="me.LevelEntity" x="1504" y="928" width="32" height="32">
+   <properties>
+    <property name="duration" value="250"/>
+    <property name="fade" value="#000000"/>
+    <property name="to" value="lvl2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="collision">
   <object id="1" x="512" y="0" width="64" height="96"/>
