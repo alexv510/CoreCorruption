@@ -50,6 +50,7 @@ var game = {
 		me.pool.register("EnemyBullet", game.EnemyBullet);
 		me.pool.register("CoinEntity", game.CoinEntity);
 		me.pool.register("Block", game.Block);
+		me.pool.register("health", game.HealthPack);
 		
 		//ENEMIES
 		me.pool.register("EnemyEntity", game.EnemyEntity);

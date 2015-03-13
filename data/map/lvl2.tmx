@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="35" tilewidth="32" tileheight="32" backgroundcolor="#363636" nextobjectid="240">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="35" tilewidth="32" tileheight="32" backgroundcolor="#363636" nextobjectid="252">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
   <image source="../img/map/grass.png" trans="ff00ff" width="96" height="192"/>
  </tileset>
@@ -310,5 +310,24 @@
    </properties>
   </object>
   <object id="238" name="Block" x="1792" y="992" width="32" height="32"/>
+  <object id="240" name="Block" x="1760" y="992" width="32" height="32"/>
+  <object id="241" name="Block" x="1760" y="1024" width="32" height="32"/>
+  <object id="242" name="Block" x="1760" y="1056" width="32" height="32"/>
+  <object id="243" name="Block" x="1792" y="1056" width="32" height="32"/>
+  <object id="244" name="Block" x="1824" y="1056" width="32" height="32"/>
+  <object id="245" name="Block" x="1824" y="1024" width="32" height="32"/>
+  <object id="246" name="Block" x="1824" y="992" width="32" height="32"/>
+  <object id="247" name="health" x="1440" y="96" width="32" height="32">
+   <properties>
+    <property name="image" value="medkit"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="250" name="health" x="224" y="32" width="32" height="32">
+   <properties>
+    <property name="image" value="medkit"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

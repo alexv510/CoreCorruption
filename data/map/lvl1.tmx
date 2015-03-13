@@ -176,7 +176,6 @@
     <property name="to" value="message2"/>
    </properties>
   </object>
-  <object id="119" name="Block" x="320" y="64" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="collision">
   <object id="1" x="512" y="0" width="64" height="96"/>
@@ -245,9 +244,6 @@
   <object id="75" name="EnemyEntity" x="1088" y="704" width="320" height="32"/>
   <object id="97" name="EnemyUp" x="800" y="608" width="32" height="352"/>
   <object id="99" name="EnemyUp" x="640" y="32" width="32" height="448"/>
-  <object id="122" name="robot" x="448" y="224" width="96" height="32"/>
-  <object id="123" name="robotUp" x="256" y="320" width="32" height="128"/>
-  <object id="124" name="CoreEntity" x="64" y="160" width="32" height="32"/>
  </objectgroup>
  <layer name="Tile Layer 2" width="50" height="30">
   <data encoding="base64">

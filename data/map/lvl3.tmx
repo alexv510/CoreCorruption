@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="62" height="46" tilewidth="32" tileheight="32" nextobjectid="94">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="62" height="46" tilewidth="32" tileheight="32" nextobjectid="123">
  <tileset firstgid="1" name="wall_right" tilewidth="32" tileheight="32">
   <image source="../img/map/wall_right.png" width="32" height="32"/>
  </tileset>
@@ -65,9 +65,22 @@
   </data>
  </layer>
  <objectgroup color="#a40002" name="Enemies">
-  <object id="91" name="robot" x="320" y="1312" width="96" height="32"/>
-  <object id="92" name="robotUp" x="256" y="1152" width="32" height="96"/>
-  <object id="93" name="CoreEntity" x="160" y="1376" width="32" height="32"/>
+  <object id="96" name="robotUp" x="800" y="1248" width="32" height="128"/>
+  <object id="97" name="robotUp" x="1184" y="1248" width="32" height="128"/>
+  <object id="98" name="robot" x="1600" y="1216" width="192" height="32"/>
+  <object id="99" name="robot" x="1632" y="832" width="128" height="32"/>
+  <object id="100" name="robot" x="896" y="864" width="160" height="32"/>
+  <object id="102" name="robot" x="928" y="992" width="160" height="32"/>
+  <object id="103" name="robotUp" x="448" y="864" width="32" height="128"/>
+  <object id="104" name="robotUp" x="1440" y="480" width="32" height="128"/>
+  <object id="105" name="robot" x="1696" y="544" width="128" height="32"/>
+  <object id="106" name="robot" x="928" y="416" width="160" height="32"/>
+  <object id="109" name="robot" x="256" y="512" width="128" height="32"/>
+  <object id="110" name="robot" x="1120" y="288" width="256" height="32"/>
+  <object id="111" name="robotUp" x="896" y="192" width="32" height="96"/>
+  <object id="112" name="CoreEntity" x="512" y="64" width="32" height="32"/>
+  <object id="114" name="robot" x="480" y="160" width="96" height="32"/>
+  <object id="115" name="robotUp" x="576" y="64" width="32" height="64"/>
  </objectgroup>
  <objectgroup name="collision">
   <object id="4" x="0" y="1056" width="256" height="128"/>
@@ -153,5 +166,35 @@
  </objectgroup>
  <objectgroup color="#000ba4" name="Entities">
   <object id="64" name="player" x="64" y="1312" width="32" height="32"/>
+  <object id="117" name="health" x="288" y="1312" width="32" height="32">
+   <properties>
+    <property name="image" value="medkit"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="119" name="health" x="992" y="1184" width="32" height="32">
+   <properties>
+    <property name="image" value="medkit"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="120" name="health" x="1408" y="800" width="32" height="32">
+   <properties>
+    <property name="image" value="medkit"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="121" name="health" x="768" y="640" width="32" height="32">
+   <properties>
+    <property name="image" value="medkit"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
+  <object id="122" name="health" x="768" y="224" width="32" height="32">
+   <properties>
+    <property name="image" value="medkit"/>
+    <property name="spritewidth" value="32"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
