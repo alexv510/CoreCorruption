@@ -5,8 +5,7 @@ var game = {
     // an object where to store game information
     data : {
         // health
-		hp : 100,
-		score: 0
+		hp : 100
     },
 
 
@@ -49,12 +48,10 @@ var game = {
 		me.pool.register("BulletEntity", game.BulletEntity);
 		me.pool.register("EnemyBullet", game.EnemyBullet);
 		me.pool.register("CoinEntity", game.CoinEntity);
-		me.pool.register("Block", game.Block);
 		
 		//ENEMIES
 		me.pool.register("EnemyEntity", game.EnemyEntity);
 		me.pool.register("EnemyUp", game.EnemyUp);
-		me.pool.register("CoreEntity", game.CoreEntity);
 		
 		me.input.bindKey(me.input.KEY.A, "left");
 		me.input.bindKey(me.input.KEY.D, "right");

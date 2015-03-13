@@ -12,7 +12,6 @@ game.CoinEntity = me.CollectableEntity.extend( {
      */
     onCollision : function (response, other) {
         //avoid further collision and delete it
-		game.data.score += 1;
         this.body.setCollisionMask(me.collision.types.NO_OBJECT);
 
         me.game.world.removeChild(this);
