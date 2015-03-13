@@ -12,6 +12,7 @@ game.PlayerEntity = me.Entity.extend({
 		settings.image = "player";
 		var width = settings.width;
 		var height = settings.height;
+        this.shotEnd = false;
 
 		settings.spritewidth = settings.width = 32;
 		settings.spritewidth = settings.height = 32;
@@ -126,6 +127,16 @@ game.PlayerEntity = me.Entity.extend({
 		}
 		
 		if(game.data.hp <= 0){
+            me.audio.disable();
+            me.audio.enable();
+            me.audio.stopTrack();
+            me.audio.stop("criminalscum");
+            me.audio.stop("freezescumbag");
+            me.audio.stop("stoprest");
+            if(this.shotEnd == false){
+                this.shotEnd = true;
+            me.audio.play("LoudBang",   1);
+            }
 			me.state.change(me.state.GAMEOVER);
 		} 
 

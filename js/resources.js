@@ -101,5 +101,7 @@ game.resources = [
   {name: "LevelSong", type: "audio", src: "data/bgm3/"},
   {name: "criminalscum", type: "audio", src: "data/voice/"},
   {name: "stoprest", type: "audio", src: "data/voice/"},
-  {name: "freezescumbag", type: "audio", src: "data/voice/"}
+  {name: "freezescumbag", type: "audio", src: "data/voice/"},
+    {name: "LoudBang", type: "audio", src:"data/sfx/"},
+    {name: "GameOver", type: "audio", src: "data/bgm4/"}
 ];

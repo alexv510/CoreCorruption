@@ -22,7 +22,7 @@ game.GameOverScreen = me.ScreenObject.extend({
 
         }
    });
-        me.audio.playTrack("theme");
+       me.audio.playTrack("GameOver");
 		game.data.hp = 100;
     },
 
