@@ -3,6 +3,18 @@ game.BulletEntity = me.Entity.extend({
     init: function (x, y, settings, direction) {
     	//constructor    
         this._super(me.Entity, 'init', [x, y , settings]);
+		var timer;
+		var currentShot;
+		if (lastMove == 1){
+		this.currentShot = 1;
+		} else if (lastMove == 0) {
+			this.currentShot = 0;
+		} else if (lastMove == 2) {
+			this.currentShot = 2;
+		} else if (lastMove == 3) {
+			this.currentShot = 3;
+		}
+		
          //conllision object
         if (this.body.shapes.length === 0) {
             this.body.addShape(new me.Rect(0, 0, this.width, this.height));
@@ -10,7 +22,7 @@ game.BulletEntity = me.Entity.extend({
 		
 		//set to projectile so doesn't hurt player
 		this.body.collisionType = me.collision.types.PROJECTILE_OBJECT;
-		this.body.setVelocity(8, 8);
+		this.body.setVelocity(5,5);
 		this.alwaysUpdate = true;
         upOn = direction[0];
         downOn = direction[1];
@@ -23,17 +35,17 @@ game.BulletEntity = me.Entity.extend({
     update: function(dt) {
     	this.timer++;
     	
-		if(upOn){
+		if(this.currentShot == 0){
 			this.body.vel.x = 0;
 			this.body.vel.y -= this.body.accel.y * me.timer.tick;
-		}else if(downOn){
+		}else if(this.CurrentShot== 2){
 			this.body.vel.x = 0;
 			this.body.vel.y += this.body.accel.y * me.timer.tick;
-		}else if(leftOn){
-			this.body.vel.y = 0;
+		}else if(this.currentShot == 3){ //left
+			this.body.vel.y = -1;
 			this.body.vel.x -= this.body.accel.x * me.timer.tick;
-		}else if(rightOn){
-			this.body.vel.y = 0;
+		}else if(this.currentShot== 1){ // right
+			this.body.vel.y = -1;
 			this.body.vel.x += this.body.accel.x * me.timer.tick;
 		}
 		

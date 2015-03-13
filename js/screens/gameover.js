@@ -4,19 +4,15 @@ game.GameOverScreen = me.ScreenObject.extend({
      */
     onResetEvent: function() {
         // me.audio.playTrack("theme");
-        me.game.world.addChild(new me.Sprite(0,0,me.loader.getImage('title-screen')), -10);
+        me.game.world.addChild(new me.Sprite(0,0,me.loader.getImage('deathscreen')), -10);
         me.input.bindKey(me.input.KEY.ENTER, "start");// TODO
         //this is how we place text on the game.
        me.game.world.addChild(new (me.Renderable.extend({
             init: function(){
                 this._super(me.Renderable, 'init', [400,30,me.game.viewport.width, me.game.viewport.height]);
-                this.font = new me.Font("Arial", 50, "red");
+                this.font = new me.Font("Arial", 32, "red");
             },
             
-            draw: function(renderer){
-                this.font.draw(renderer.getContext(), "Core Corruption", 100, 50);
-                this.font.draw(renderer.getContext(), "Press Enter to Play.", 50, 300);
-            }
         })));
         
         //event handle to listen for input, use this when there is no update function
@@ -27,6 +23,7 @@ game.GameOverScreen = me.ScreenObject.extend({
         }
    });
         me.audio.playTrack("theme");
+		game.data.hp = 100;
     },
 
     /**

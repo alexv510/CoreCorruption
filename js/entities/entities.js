@@ -20,6 +20,7 @@ game.PlayerEntity = me.Entity.extend({
 		var leftOn;
 		var rightOn;
 		var downOn;
+		var lastMove;
 		
         this._super(me.Entity, 'init', [x, y , settings]);
 		
@@ -58,13 +59,14 @@ game.PlayerEntity = me.Entity.extend({
 				spriteheight: 24,
 				width: 24,
 				height: 24
-			}, [upOn, leftOn, rightOn, downOn]);
+			}, [upOn, downOn, leftOn, rightOn]);
 			me.game.world.addChild(bullet, this.z);
 		}
 		if(me.input.isKeyPressed('left') && leftOn == 1) {
 			rightOn = 0;
 			upOn = 0;
 			downOn = 0;
+			lastMove = 3;
 			this.renderable.flipX(true);
 			this.body.vel.x -= this.body.accel.x * me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_right")){
@@ -75,6 +77,7 @@ game.PlayerEntity = me.Entity.extend({
 			leftOn = 0;
 			downOn = 0;
 			upOn = 0;
+			lastMove = 1;
 			this.renderable.flipX(false);
 			this.body.vel.x += this.body.accel.x* me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_right")){
@@ -85,6 +88,7 @@ game.PlayerEntity = me.Entity.extend({
 			leftOn = 0;
 			upOn = 0;
 			rightOn = 0;
+			lastMove = 2;
 			this.body.vel.y += this.body.accel.y*me.timer.tick;
 			 if(!this.renderable.isCurrentAnimation("run_down")){
 				this.renderable.setCurrentAnimation("run_down");
@@ -94,6 +98,7 @@ game.PlayerEntity = me.Entity.extend({
 			leftOn = 0;
 			downOn = 0;
 			rightOn = 0;
+			lastMove = 0;
 			this.body.vel.y -= this.body.accel.y* me.timer.tick;
 			if(!this.renderable.isCurrentAnimation("run_up")){
 				this.renderable.setCurrentAnimation("run_up");
@@ -120,9 +125,9 @@ game.PlayerEntity = me.Entity.extend({
 			}
 		}
 		
-		/* if(game.data.hp <= 0){
-			me.state.change(me.state.GAME_END);
-		} */
+		if(game.data.hp <= 0){
+			me.state.change(me.state.GAMEOVER);
+		} 
 
         // apply physics to the body (this moves the entity)
         this.body.update(dt);
