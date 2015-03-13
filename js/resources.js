@@ -55,5 +55,6 @@ game.resources = [
   {name: "lvl1", type: "tmx", src: "data/map/lvl1.tmx"},
   
   //audio
-  {name: "theme", type: "audio", src: "data/bgm2/"}
+  {name: "theme", type: "audio", src: "data/bgm2/"},
+    {name: "LevelSong", type: "audio", src: "data/bgm3/"}
 ];

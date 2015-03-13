@@ -6,7 +6,7 @@ game.EnemyUp = me.Entity.extend({
     // save the area size defined in Tiled
     var width = settings.width;
     var height = settings.height;
- 
+    this.type = "EnemyEntity";
     // adjust the size setting information to match the sprite size
     // so that the entity object is created with the right size
     settings.spritewidth = settings.width = 64;

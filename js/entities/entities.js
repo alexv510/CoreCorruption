@@ -52,7 +52,7 @@ game.PlayerEntity = me.Entity.extend({
     update : function (dt) {
 		
 		if(me.input.isKeyPressed('shoot')){
-			var bullet = me.pool.pull("BulletEntity", this.pos.x-5, this.pos.y, {
+			var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
 				image: 'bullet',
 				spritewidth: 24,
 				spriteheight: 24,
@@ -61,7 +61,6 @@ game.PlayerEntity = me.Entity.extend({
 			}, [upOn, leftOn, rightOn, downOn]);
 			me.game.world.addChild(bullet, this.z);
 		}
-
 		if(me.input.isKeyPressed('left') && leftOn == 1) {
 			rightOn = 0;
 			upOn = 0;
@@ -174,6 +173,4 @@ game.PlayerEntity = me.Entity.extend({
 	 	  // Make the object solid
 	  	  return true;
     },
-	
-	
 });
