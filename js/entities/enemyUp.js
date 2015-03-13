@@ -2,6 +2,7 @@ game.EnemyUp = me.Entity.extend({
   init: function(x, y, settings) {
     // define this here instead of tiled
      var skin = Math.floor((Math.random()*6)+1);
+      settings.name = "enemy";
       switch(skin){
               case 1: settings.image = "wheelie_up"; break;
               case 2: settings.image = "cop2";break;
@@ -11,7 +12,10 @@ game.EnemyUp = me.Entity.extend({
               case 6: settings.image = "cop6";break;
               default: settings.image = "cop6";break;
       }
+        this.now = new Date().getTime();
+      this.lastShot = this.now;
      this.touchSound = false;
+      this.prevMove = 0;
     // save the area size defined in Tiled
     var width = settings.width;
     var height = settings.height;
@@ -49,7 +53,7 @@ game.EnemyUp = me.Entity.extend({
  
   // manage the enemy movement
   update: function(dt) {
- 
+ this.now = new Date().getTime();
     if (this.alive) {
       if (this.walkLeft && this.pos.y <= this.startY) {
       this.walkLeft = false;
@@ -62,12 +66,27 @@ game.EnemyUp = me.Entity.extend({
     }
     // make it walk
    // this.renderable.flipX(this.walkLeft);
+         var buffer = this.walkLeft ? -32:32;
+        if((Math.round(this.now/1000)%2 === 0) && ((this.now - this.lastShot) >= 1000)){
+                this.lastShot = this.now;
+                var bullet = me.pool.pull("EnemyBullet", this.pos.x, this.pos.y+buffer, {
+				image: 'bullet',
+				spritewidth: 24,
+				spriteheight: 24,
+				width: 24,
+				height: 24
+			}, [this.prevMove, downOn, leftOn, rightOn]);
+			me.game.world.addChild(bullet, this.z);
+        }
+        
      if(this.walkLeft){
+         this.prevMove = 0;
             this.body.vel.y +=-this.body.accel.y * me.timer.tick;
             if(!this.renderable.isCurrentAnimation("run_down")){
         this.renderable.setCurrentAnimation("run_down");
             }
         }else if(!this.walkLeft){
+            this.prevMove = 2;
                     this.body.vel.y +=this.body.accel.y * me.timer.tick;
             if(!this.renderable.isCurrentAnimation("run_up")){
               this.renderable.setCurrentAnimation("run_up");

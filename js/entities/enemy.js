@@ -14,7 +14,8 @@ game.EnemyEntity = me.Entity.extend({
               case 6: settings.image = "cop6";break;
               default: settings.image = "cop6";break;
       }
-    settings.image = "wheelie_right";
+       this.prevMove = 0;
+    //settings.image = "wheelie_right";
 	settings.name = "enemy";
       this.now = new Date().getTime();
       this.lastShot = new Date().getTime();
@@ -60,7 +61,7 @@ game.EnemyEntity = me.Entity.extend({
  
   // manage the enemy movement
   update: function(dt) {
-    
+    this.now = new Date().getTime();
     if (this.alive) {
       if (this.walkLeft && this.pos.x <= this.startX) {
       this.walkLeft = false;
@@ -71,16 +72,17 @@ game.EnemyEntity = me.Entity.extend({
         this.touchSound = false; // here too
         this.body.setVelocity( Math.floor((Math.random()*6)+1), Math.floor((Math.random()*6)+1));
     }
-        if((Math.round(this.now/1000)%10 === 0) && ((this.now - this.lastShot) >= 1000)){
+        var buffer = this.walkLeft ? -32:32;
+        if((Math.round(this.now/1000)%3 === 0) && ((this.now - this.lastShot) >= 1000)){
                 this.lastShot = this.now;
-               /* var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
+                var bullet = me.pool.pull("EnemyBullet", this.pos.x+buffer, this.pos.y, {
 				image: 'bullet',
 				spritewidth: 24,
 				spriteheight: 24,
 				width: 24,
 				height: 24
-			}, [upOn, downOn, leftOn, rightOn]);
-			me.game.world.addChild(bullet, this.z);*/
+			}, [this.prevMove, downOn, leftOn, rightOn]);
+			me.game.world.addChild(bullet, this.z);
         }
        
         
@@ -95,11 +97,13 @@ game.EnemyEntity = me.Entity.extend({
    // this.renderable.flipX(this.walkLeft);
    // this.body.vel.x += (this.walkLeft) ? -this.body.accel.x * me.timer.tick : this.body.accel.x * me.timer.tick;
         if(this.walkLeft){
+            this.prevMove = 3;
             this.body.vel.x +=-this.body.accel.x * me.timer.tick;
             if(!this.renderable.isCurrentAnimation("run_left")){
         this.renderable.setCurrentAnimation("run_left");
             }
         }else if(!this.walkLeft){
+           this.prevMove = 1;
                     this.body.vel.x +=this.body.accel.x * me.timer.tick;
             if(!this.renderable.isCurrentAnimation("run_right")){
               this.renderable.setCurrentAnimation("run_right");

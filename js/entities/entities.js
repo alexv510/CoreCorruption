@@ -53,7 +53,7 @@ game.PlayerEntity = me.Entity.extend({
 	 
     update : function (dt) {
 		
-		if(me.input.isKeyPressed('shoot')){
+		if(me.input.isKeyPressed('shoot') && me.levelDirector.getCurrentLevelId() === 'lvl3'){
 			var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
 				image: 'bullet',
 				spritewidth: 24,
@@ -172,15 +172,24 @@ game.PlayerEntity = me.Entity.extend({
 		    case me.collision.types.ENEMY_OBJECT:
 				//flicker in case we touched an enemy
 				//if flickering, don't deduct hp until done flickering
-	        	if (other.name == "enemy"){
+                
+	        	if (other.name == "enemy" ){
 	        		if(!this.renderable.isFlickering()){
 	        			this.renderable.flicker(750);
 	        			game.data.hp -= 50;
 	        		}
 	        	}
+                if( other.name === 'enemybullet'){
+                    if(response.overlapV.X >= -5 || response.overlapV.Y <= -5){
+                        if(!this.renderable.isFlickering()){
+	        			this.renderable.flicker(750);
+	        			game.data.hp -= 50;
+	        		}
+                    }
+                }
 		      	return false;
 		      	break;
-
+            
 		    default:
 		    	// Do not respond to other objects (e.g. coins)
 		      	return false;

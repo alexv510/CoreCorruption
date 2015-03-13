@@ -5,13 +5,14 @@ game.EnemyBullet = me.Entity.extend({
         this._super(me.Entity, 'init', [x, y , settings]);
 		var timer;
 		var currentShot;
-		if (lastMove == 1){
+        settings.name = "enemybullet";
+		if (direction[0] == 1){
 		this.currentShot = 1;
-		} else if (lastMove == 0) {
+		} else if (direction[0] == 0) {
 			this.currentShot = 0;
-		} else if (lastMove == 2) {
+		} else if (direction[0] == 2) {
 			this.currentShot = 2;
-		} else if (lastMove == 3) {
+		} else if (direction[0] == 3) {
 			this.currentShot = 3;
 		}
 		
@@ -69,6 +70,23 @@ game.EnemyBullet = me.Entity.extend({
  			me.game.world.removeChild(this);
  			return false;
     	}
-        return false;
+        if(response.b.body.collisionType === me.collision.types.PLAYER_OBJECT){
+               var choose = Math.floor((Math.random()*3)+1);
+         
+          switch(choose){
+                case 1: me.audio.play("criminalscum", .5);
+                        this.touchSound = true;
+                        break;
+                case 2: me.audio.play("stoprest", .5); this.touchSound = true;break;
+                
+                case 3: me.audio.play("freezescumbag", .5);this.touchSound = true; break;
+                  
+                default: me.audio.play("stoprest");this.touchSound = true; break;
+          }
+         
+        game.data.hp -= 50;
+        me.game.world.removeChild(this);
+        }
+        return true;
     }
 });
