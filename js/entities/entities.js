@@ -68,7 +68,7 @@ game.PlayerEntity = me.Entity.extend({
             me.audio.stopTrack();
             me.audio.playTrack("boss");
         }
-		if(me.input.isKeyPressed('shoot') && (me.levelDirector.getCurrentLevelId() === 'lvl3'||me.levelDirector.getCurrentLevelId() === 'message_instructions' ){
+		if(me.input.isKeyPressed('shoot') && (me.levelDirector.getCurrentLevelId() === 'lvl3'||me.levelDirector.getCurrentLevelId() === 'message_instructions') ){
 			var bullet = me.pool.pull("BulletEntity", this.pos.x, this.pos.y, {
 				image: 'bullet',
 				spritewidth: 24,
