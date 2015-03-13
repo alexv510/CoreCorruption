@@ -24,6 +24,7 @@ game.EnemyUp = me.Entity.extend({
     // so that the entity object is created with the right size
     settings.spritewidth = settings.width = 32;
     settings.spriteheight = settings.height = 32;
+	settings.name = "enemy";
      
     // call the parent constructor
     this._super(me.Entity, 'init', [x, y , settings]);
@@ -38,6 +39,8 @@ game.EnemyUp = me.Entity.extend({
  
     // manually update the entity bounds as we manually change the position
     this.updateBounds();
+	
+	this.body.collisionType = me.collision.types.ENEMY_OBJECT;
  
  this.renderable.flipX(this.walkLeft);
     // to remember which side we were walking
