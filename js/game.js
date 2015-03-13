@@ -58,8 +58,6 @@ var game = {
 		me.input.bindKey(me.input.KEY.W, "up");
 		me.input.bindKey(me.input.KEY.S, "down");
 
-        me.input.bindKey(me.input.KEY.SHIFT, "Shift");
-
 		me.input.bindKey(me.input.KEY.SPACE, "shoot", true);
 
 

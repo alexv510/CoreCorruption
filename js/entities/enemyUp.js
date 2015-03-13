@@ -34,6 +34,8 @@ game.EnemyUp = me.Entity.extend({
  
     // manually update the entity bounds as we manually change the position
     this.updateBounds();
+	
+	this.body.collisionType = me.collision.types.ENEMY_OBJECT;
  
  this.renderable.flipX(this.walkLeft);
     // to remember which side we were walking
