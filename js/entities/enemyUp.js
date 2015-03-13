@@ -20,6 +20,7 @@ game.EnemyUp = me.Entity.extend({
     // so that the entity object is created with the right size
     settings.spritewidth = settings.width = 32;
     settings.spriteheight = settings.height = 32;
+	settings.name = "enemy";
      
     // call the parent constructor
     this._super(me.Entity, 'init', [x, y , settings]);

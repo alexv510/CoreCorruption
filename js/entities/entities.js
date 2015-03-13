@@ -175,7 +175,7 @@ game.PlayerEntity = me.Entity.extend({
 	        	if (other.name == "enemy"){
 	        		if(!this.renderable.isFlickering()){
 	        			this.renderable.flicker(750);
-	        			game.data.hp -= 50;
+	        			game.data.hp -= 15;
 	        		}
 	        	}
 		      	return false;

@@ -30,7 +30,7 @@ game.resources = [
   {name: "sidewalk_corner_top_left", type:"image", src: "data/img/map/sidewalk_corner_top_left.png"},
   {name: "sidewalk_corner_bottom_right", type:"image", src: "data/img/map/sidewalk_corner_bottom_right.png"},
   {name: "sidewalk_corner_bottom_left", type:"image", src: "data/img/map/sidewalk_corner_bottom_left.png"},
-    {name: "fence", type:"image", src: "data/img/map/fence.png"},
+  {name: "fence", type:"image", src: "data/img/map/fence.png"},
   {name: "metal_box", type:"image", src: "data/img/map/metal_box.png"},
   {name: "metal_floor", type:"image", src: "data/img/map/metal_floor.png"},
   {name: "wall_edge_bottom_right", type:"image", src: "data/img/map/wall_edge_bottom_right.png"},
@@ -77,10 +77,12 @@ game.resources = [
   {name: "message1", type:"image", src: "data/img/map/message1.png"},
   {name: "message2", type:"image", src: "data/img/map/message2.png"},
   {name: "message3", type:"image", src: "data/img/map/message3.png"},
+  {name: "crystal", type:"image", src: "data/img/map/crystal.png"},
     
   //screen stuff
   {name: "title-screen", type:"image", src: "data/img/title/title.png"},
   {name: "deathscreen", type:"image", src: "data/img/gui/deathscreen.png"},
+  {name: "win", type:"image", src: "data/img/gui/win.png"},
  
   //font
   {name: "16x16_font", type: "image", src: "data/img/font/16x16_font.png"},
@@ -92,10 +94,10 @@ game.resources = [
   // our enemty entity
   {name: "wheelie_right", type:"image", src: "data/img/sprite/cop3.png"},
   {name: "wheelie_up", type:"image", src: "data/img/sprite/cop1.png"},
-    {name: "cop2", type:"image", src: "data/img/sprite/cop2.png"},
-    {name: "cop4", type:"image", src: "data/img/sprite/cop4.png"},
-    {name: "cop5", type:"image", src: "data/img/sprite/cop5.png"},
-    {name: "cop6", type:"image", src: "data/img/sprite/cop6.png"},
+  {name: "cop2", type:"image", src: "data/img/sprite/cop2.png"},
+  {name: "cop4", type:"image", src: "data/img/sprite/cop4.png"},
+  {name: "cop5", type:"image", src: "data/img/sprite/cop5.png"},
+  {name: "cop6", type:"image", src: "data/img/sprite/cop6.png"},
   
   //bullet
   {name: "bullet", type:"image", src: "data/img/map/bullet.png"},
