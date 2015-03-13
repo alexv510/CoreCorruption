@@ -72,6 +72,7 @@ game.resources = [
   {name: "street_line_horizontal", type:"image", src: "data/img/map/street_line_horizontal.png"},
   {name: "table", type:"image", src: "data/img/map/table.png"},
   {name: "trash_can", type:"image", src: "data/img/map/trash_can.png"},
+  {name: "portal", type:"image", src: "data/img/map/portal.png"},
     
   //screen stuff
   {name: "title-screen", type:"image", src: "data/img/title/title.png"},

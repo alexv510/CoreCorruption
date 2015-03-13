@@ -46,6 +46,7 @@ var game = {
 		
 		me.pool.register( "player", game.PlayerEntity );
 		me.pool.register("BulletEntity", game.BulletEntity);
+		me.pool.register("EnemyBullet", game.EnemyBullet);
 		me.pool.register("CoinEntity", game.CoinEntity);
 		
 		//ENEMIES
