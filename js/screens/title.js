@@ -14,8 +14,7 @@ game.TitleScreen = me.ScreenObject.extend({
             },
             
             draw: function(renderer){
-                this.font.draw(renderer.getContext(), "Core Corruption", 100, 50);
-                this.font.draw(renderer.getContext(), "Press Enter to Play.", 50, 300);
+            
             }
         })));
         
