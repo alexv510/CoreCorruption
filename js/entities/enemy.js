@@ -4,6 +4,16 @@ an enemy Entity
 game.EnemyEntity = me.Entity.extend({
   init: function(x, y, settings) {
     // define this here instead of tiled
+    var skin = Math.floor((Math.random()*6)+1);
+      switch(skin){
+              case 1: settings.image = "wheelie_up"; break;
+              case 2: settings.image = "cop2";break;
+              case 3: settings.image = "wheelie_right"; break;
+              case 4: settings.image = "cop4";break;
+              case 5: settings.image = "cop5";break;
+              case 6: settings.image = "cop6";break;
+              default: settings.image = "cop6";break;
+      }
     settings.image = "wheelie_right";
 	settings.name = "enemy";
       this.now = new Date().getTime();
@@ -43,7 +53,7 @@ game.EnemyEntity = me.Entity.extend({
     this.walkLeft = false;
  
     // walking & jumping speed
-    this.body.setVelocity(1, 1);
+    this.body.setVelocity( Math.floor((Math.random()*4)+1), Math.floor((Math.random()*4)+1));
 	this.body.gravity = 0.0;
     this.body.setCollisionType = me.collision.types.ENEMY_OBJECT;
   },
@@ -55,9 +65,11 @@ game.EnemyEntity = me.Entity.extend({
       if (this.walkLeft && this.pos.x <= this.startX) {
       this.walkLeft = false;
           this.touchSound = false; // here is where I change it to false
+          this.body.setVelocity( Math.floor((Math.random()*7)+1), Math.floor((Math.random()*6)+1));
     } else if (!this.walkLeft && this.pos.x >= this.endX) {
       this.walkLeft = true;
         this.touchSound = false; // here too
+        this.body.setVelocity( Math.floor((Math.random()*6)+1), Math.floor((Math.random()*6)+1));
     }
         if((Math.round(this.now/1000)%10 === 0) && ((this.now - this.lastShot) >= 1000)){
                 this.lastShot = this.now;
@@ -70,6 +82,7 @@ game.EnemyEntity = me.Entity.extend({
 			}, [upOn, downOn, leftOn, rightOn]);
 			me.game.world.addChild(bullet, this.z);*/
         }
+       
         
         if(this.pos.x - game.data.playerX <= 96 &&
              ( this.pos.y - game.data.playerY <= 32 ||
@@ -81,27 +94,17 @@ game.EnemyEntity = me.Entity.extend({
     // make it walk
    // this.renderable.flipX(this.walkLeft);
    // this.body.vel.x += (this.walkLeft) ? -this.body.accel.x * me.timer.tick : this.body.accel.x * me.timer.tick;
-        if(this.walkLeft&& !this.moveV || this.moveDir == 1){
+        if(this.walkLeft){
             this.body.vel.x +=-this.body.accel.x * me.timer.tick;
             if(!this.renderable.isCurrentAnimation("run_left")){
         this.renderable.setCurrentAnimation("run_left");
             }
-        }else if(!this.moveV || this.moveDir == 3){
+        }else if(!this.walkLeft){
                     this.body.vel.x +=this.body.accel.x * me.timer.tick;
             if(!this.renderable.isCurrentAnimation("run_right")){
               this.renderable.setCurrentAnimation("run_right");
             }
-        }else if(this.moveV && this.verticalDir > 0 || this.moveDir == 2){
-                this.body.vel.y +=this.body.accel.y*me.timer.tick;
-                if(!this.renderable.isCurrentAnimation("run_down")){
-              this.renderable.setCurrentAnimation("run_down");
-            }
-        }else{
-                this.body.vel.y -=this.body.accel.y*me.timer.tick;
-            if(!this.renderable.isCurrentAnimation("run_up")){
-              this.renderable.setCurrentAnimation("run_up");
-            }
-        }
+        
      
     } else {
       this.body.vel.x = 0;
@@ -116,6 +119,7 @@ game.EnemyEntity = me.Entity.extend({
        
     // return true if we moved or if the renderable was updated
     return (this._super(me.Entity, 'update', [dt]) || this.body.vel.x !== 0 || this.body.vel.y !== 0);
+  }
   },
    
   /**
@@ -149,12 +153,14 @@ game.EnemyEntity = me.Entity.extend({
          if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
                 //this.moveV = false;
             this.walkLeft = this.walkLeft ? false: true;
+             this.body.setVelocity( Math.floor((Math.random()*6)+1), Math.floor((Math.random()*6)+1));
          }
        
       return false;
     }
        if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
                 this.walkLeft = this.walkLeft ? false: true;
+           this.body.setVelocity( Math.floor((Math.random()*6)+1), Math.floor((Math.random()*6)+1));
          }
       //this.touchSound = false;
     // Make all other objects solid

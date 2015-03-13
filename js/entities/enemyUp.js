@@ -1,16 +1,25 @@
 game.EnemyUp = me.Entity.extend({
   init: function(x, y, settings) {
     // define this here instead of tiled
-    settings.image = "wheelie_up";
-     
+     var skin = Math.floor((Math.random()*6)+1);
+      switch(skin){
+              case 1: settings.image = "wheelie_up"; break;
+              case 2: settings.image = "cop2";break;
+              case 3: settings.image = "wheelie_right"; break;
+              case 4: settings.image = "cop4";break;
+              case 5: settings.image = "cop5";break;
+              case 6: settings.image = "cop6";break;
+              default: settings.image = "cop6";break;
+      }
+     this.touchSound = false;
     // save the area size defined in Tiled
     var width = settings.width;
     var height = settings.height;
     this.type = "EnemyEntity";
     // adjust the size setting information to match the sprite size
     // so that the entity object is created with the right size
-    settings.spritewidth = settings.width = 64;
-    settings.spriteheight = settings.height = 64;
+    settings.spritewidth = settings.width = 32;
+    settings.spriteheight = settings.height = 32;
      
     // call the parent constructor
     this._super(me.Entity, 'init', [x, y , settings]);
@@ -31,7 +40,8 @@ game.EnemyUp = me.Entity.extend({
     this.walkLeft = false;
 
 	
- 
+ this.renderable.addAnimation("run_up", [0,1,2] );
+      this.renderable.addAnimation("run_down", [9,10,11] );
     // walking & jumping speed
     this.body.setVelocity(2, 3);
      
@@ -43,12 +53,30 @@ game.EnemyUp = me.Entity.extend({
     if (this.alive) {
       if (this.walkLeft && this.pos.y <= this.startY) {
       this.walkLeft = false;
+           this.touchSound = false; // here is where I change it to false
+          this.body.setVelocity( Math.floor((Math.random()*5)+1), Math.floor((Math.random()*5)+1));
     } else if (!this.walkLeft && this.pos.y >= this.endY) {
       this.walkLeft = true;
+         this.touchSound = false; // here is where I change it to false
+        this.body.setVelocity( Math.floor((Math.random()*5)+1), Math.floor((Math.random()*5)+1));
     }
     // make it walk
    // this.renderable.flipX(this.walkLeft);
-    this.body.vel.y += (this.walkLeft) ? -this.body.accel.y * me.timer.tick : this.body.accel.y * me.timer.tick;
+     if(this.walkLeft){
+            this.body.vel.y +=-this.body.accel.y * me.timer.tick;
+            if(!this.renderable.isCurrentAnimation("run_down")){
+        this.renderable.setCurrentAnimation("run_down");
+            }
+        }else if(!this.walkLeft){
+                    this.body.vel.y +=this.body.accel.y * me.timer.tick;
+            if(!this.renderable.isCurrentAnimation("run_up")){
+              this.renderable.setCurrentAnimation("run_up");
+            }
+        
+     
+    } else {
+      this.body.vel.x = 0;
+    }
      
     } else {
       this.body.vel.y = 0;
@@ -69,48 +97,43 @@ game.EnemyUp = me.Entity.extend({
    * (called when colliding with other objects)
    */
   onCollision : function (response, other) {
-  switch (response.b.body.collisionType) {
-    case me.collision.types.WORLD_SHAPE:
-      // Simulate a platform object
-      if (other.type === "platform") {
-        if (this.body.falling &&
-          !me.input.isKeyPressed('down') &&
-          // Shortest overlap would move the player upward
-          (response.overlapV.y > 0) &&
-          // The velocity is reasonably fast enough to have penetrated to the overlap depth
-          (~~this.body.vel.y >= ~~response.overlapV.y)
-        ) {
-          // Disable collision on the x axis
-          response.overlapV.x = 0;
-          // Repond to the platform (it is solid)
-          return true;
-        }
-        // Do not respond to the platform (pass through)
-        return false;
+  if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
+      // res.y >0 means touched by something on the bottom
+      // which mean at top position for this one
+
+      if (this.alive && ((response.overlapV.y >= 0)  || (response.overlapV.x >= -5)) && response.b.body.collisionType === me.collision.types.PLAYER_OBJECT ) {
+
+       // this.renderable.flicker(750);
+          //here i removed flickering and added audio stuff
+         var choose = Math.floor((Math.random()*3)+1);
+         if(this.touchSound == false){
+          switch(choose){
+                case 1: me.audio.play("criminalscum", .5);
+                        this.touchSound = true;
+                        break;
+                case 2: me.audio.play("stoprest", .5); this.touchSound = true;break;
+                
+                case 3: me.audio.play("freezescumbag", .5);this.touchSound = true; break;
+                  
+                default: me.audio.play("stoprest");this.touchSound = true; break;
+          }
+         }
+          
       }
-      break;
- 
-    case me.collision.types.ENEMY_OBJECT:
-      if ((response.overlapV.y>0) && !this.body.jumping) {
-        // bounce (force jump)
-        this.body.falling = false;
-        this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
-        // set the jumping flag
-        this.body.jumping = true;
-      }
-      else {
-        // let's flicker in case we touched an enemy
-        this.renderable.flicker(750);
-      }
+         if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
+                //this.moveV = false;
+            this.walkLeft = this.walkLeft ? false: true;
+             this.body.setVelocity( Math.floor((Math.random()*5)+1), Math.floor((Math.random()*5)+1));
+         }
+       
       return false;
-      break;
- 
-    default:
-      // Do not respond to other objects (e.g. coins)
-      return false;
-  }
- 
-  // Make the object solid
-  return true;
+    }
+       if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
+                this.walkLeft = this.walkLeft ? false: true;
+           this.body.setVelocity( Math.floor((Math.random()*5)+1), Math.floor((Math.random()*5)+1));
+         }
+      //this.touchSound = false;
+    // Make all other objects solid
+    return true;
 }
 });

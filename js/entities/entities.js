@@ -27,7 +27,7 @@ game.PlayerEntity = me.Entity.extend({
 		
 		this.body.gravity = 0.0;
 		
-		this.body.setVelocity(3,3);
+		this.body.setVelocity(2,2);
 		
 		this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 		

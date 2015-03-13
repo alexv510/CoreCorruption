@@ -87,7 +87,11 @@ game.resources = [
   {name: "spinning_coin_gold",  type:"image",	src: "data/img/map/disk.png"},
   // our enemty entity
   {name: "wheelie_right", type:"image", src: "data/img/sprite/cop3.png"},
-  {name: "wheelie_up", type:"image", src: "data/img/sprite/wheelie_right.png"},
+  {name: "wheelie_up", type:"image", src: "data/img/sprite/cop1.png"},
+    {name: "cop2", type:"image", src: "data/img/sprite/cop2.png"},
+    {name: "cop4", type:"image", src: "data/img/sprite/cop4.png"},
+    {name: "cop5", type:"image", src: "data/img/sprite/cop5.png"},
+    {name: "cop6", type:"image", src: "data/img/sprite/cop6.png"},
   
   //bullet
   {name: "bullet", type:"image", src: "data/img/map/bullet.png"},
