@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="35" tilewidth="32" tileheight="32" backgroundcolor="#363636" nextobjectid="238">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="35" tilewidth="32" tileheight="32" backgroundcolor="#363636" nextobjectid="240">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
   <image source="../img/map/grass.png" trans="ff00ff" width="96" height="192"/>
  </tileset>
@@ -309,5 +309,6 @@
     <property name="spritewidth" value="32"/>
    </properties>
   </object>
+  <object id="238" name="Block" x="1792" y="992" width="32" height="32"/>
  </objectgroup>
 </map>
