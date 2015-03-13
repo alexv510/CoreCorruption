@@ -12,7 +12,7 @@ game.Block = me.Entity.extend({
 		},
 		
 		update: function(dt){
-			if(game.data.score == 5){
+			if(game.data.score >= 5){
 				me.game.world.removeChild(this);
 			}
 		},
@@ -21,10 +21,10 @@ game.Block = me.Entity.extend({
 			if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
 				// res.y >0 means touched by something on the bottom
 				// which mean at top position for this one
-				if (this.alive && (response.overlapV.y > 0) && response.a.body.falling) {
+				if (this.alive && (response.overlapV.y > 0)||  && response.a.body.falling) {
 					this.renderable.flicker(750);
 				}
-				return false;
+				return true;
 			}
 				// Make all other objects solid
 			return true;

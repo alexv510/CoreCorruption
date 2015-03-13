@@ -98,6 +98,7 @@ game.resources = [
   {name: "cop4", type:"image", src: "data/img/sprite/cop4.png"},
   {name: "cop5", type:"image", src: "data/img/sprite/cop5.png"},
   {name: "cop6", type:"image", src: "data/img/sprite/cop6.png"},
+    {name: "robot", type:"image:", src: "data/img/sprite/robot_walk.png"},
   
   //bullet
   {name: "bullet", type:"image", src: "data/img/map/bullet.png"},
