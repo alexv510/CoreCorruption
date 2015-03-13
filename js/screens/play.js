@@ -7,6 +7,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		// load a level
 		me.levelDirector.loadLevel("message_instructions");
 		
+		game.data.score = 0;
 		
         // add our HUD to the game world
         this.HUD = new game.HUD.Container();
