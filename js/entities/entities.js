@@ -26,7 +26,7 @@ game.PlayerEntity = me.Entity.extend({
 		
 		this.body.gravity = 0.0;
 		
-		this.body.setVelocity(3,3);
+		this.body.setVelocity(1,1);
 		
 		me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 		
@@ -50,7 +50,11 @@ game.PlayerEntity = me.Entity.extend({
 	 
     update : function (dt) {
 
-		
+		if(me.input.isKeyPressed('Shift')){
+            this.body.setVelocity(3,3);
+        }else{
+            this.body.setVelocity(1,1);
+        }
 		if(me.input.isKeyPressed('left') && leftOn == 1) {
 			rightOn = 0;
 			upOn = 0;
