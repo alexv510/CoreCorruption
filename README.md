@@ -9,7 +9,7 @@ There are 3 levels:
           Third: The intel you recieved now lets you take the fight to them, as you storm there robot base to destroy the core.
 
 Game was made by:
-          Alexis Valladares
-          Alecsander Fortine
-          Anthony Ku
+          Alexis Valladares,
+          Alecsander Fortine,
+          Anthony Ku,
           Bryan Ambriz
