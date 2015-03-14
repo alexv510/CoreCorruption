@@ -37,7 +37,7 @@ game.PlayerEntity = me.Entity.extend({
 		
 		this.body.gravity = 0.0;
 		
-		this.body.setVelocity(2,2);
+		this.body.setVelocity(4,4);
 		
 		this.body.collisionType = me.collision.types.PLAYER_OBJECT;
 		
@@ -63,9 +63,10 @@ game.PlayerEntity = me.Entity.extend({
      */
 	 
     update : function (dt) {
+		
        
-        if(me.input.isKeyPressed('next')) game.data.hp = 100;
-		 if(me.levelDirector.getCurrentLevelId() === 'lvl3' && this.bosslevel == false){
+        if(me.input.isKeyPressed('GOD MODE')) game.data.hp = 1000;
+		if(me.levelDirector.getCurrentLevelId() === 'lvl3' && this.bosslevel == false){
              this.bosslevel = true;
             me.audio.stopTrack();
             me.audio.playTrack("boss");
