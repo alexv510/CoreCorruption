@@ -20,7 +20,7 @@ game.CoreEntity = me.Entity.extend( {
 	         if (this.alive && (response.overlapV.y > 0)  || (response.overlapV.x > 0)) {
         this.renderable.flicker(750);
 		} else {
-				this.health -= 50;
+				this.health -= 15;
 				}
 		if (this.health <= 0) {
         me.game.world.removeChild(this);
