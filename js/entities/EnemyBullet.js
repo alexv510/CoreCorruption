@@ -23,7 +23,7 @@ game.EnemyBullet = me.Entity.extend({
 		
 		//set to projectile so doesn't hurt player
 		this.body.collisionType = me.collision.types.ENEMY_OBJECT;
-		this.body.setVelocity(5,5);
+		this.body.setVelocity(7,7);
 		this.alwaysUpdate = true;
         upOn = direction[0];
         downOn = direction[1];
@@ -66,7 +66,7 @@ game.EnemyBullet = me.Entity.extend({
      * (called when colliding with other objects)
      */
     onCollision : function (response, other) { 
-    	if (response.b.body.collisionType === me.collision.types.WORLD_SHAPE){
+    	if (response.b.body.collisionType === me.collision.types.WORLD_SHAPE || response.b.body.collisonType === me.collision.types.ENEMY_OBJECT||response.b.body.collisonType === me.collision.types.PROJECTILE_OBJECT ){
  			me.game.world.removeChild(this);
  			return false;
     	}

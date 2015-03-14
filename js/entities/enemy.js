@@ -131,6 +131,7 @@ game.EnemyEntity = me.Entity.extend({
    * (called when colliding with other objects)
    */
   onCollision : function (response, other) {
+      if(response.b.body.collisonType === me.collision.types.PROJECTILE_OBJECT) return true;
     if (response.b.body.collisionType !== me.collision.types.WORLD_SHAPE) {
       // res.y >0 means touched by something on the bottom
       // which mean at top position for this one
@@ -162,7 +163,7 @@ game.EnemyEntity = me.Entity.extend({
        
       return false;
     }
-       if ((response.overlapV.x >= -5)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
+       if ((response.overlapV.x >= -25)&& response.b.body.collisionType !== me.collision.types.PLAYER_OBJECT){
                 this.walkLeft = this.walkLeft ? false: true;
            this.body.setVelocity( Math.floor((Math.random()*6)+1), Math.floor((Math.random()*6)+1));
          }
